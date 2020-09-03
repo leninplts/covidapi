@@ -1,5 +1,25 @@
 import { Entity, Column, ObjectIdColumn, BaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
+export class MiPaciente {
+  @Column('text')
+  userid: string
+
+  @Column('text')
+  nombres: string
+
+  @Column('text')
+  apellidos: string
+
+  @Column('text')
+  evaluacion: string
+
+  @Column('text')
+  genero: string
+
+  @Column('text')
+  distrito: string
+}
+
 @Entity('usertest')
 export class UserTestEntity extends BaseEntity {
   @ObjectIdColumn()

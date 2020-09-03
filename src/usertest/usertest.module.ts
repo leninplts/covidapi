@@ -10,6 +10,6 @@ import { HorarioModule } from '../horario/horario.module';
     TypeOrmModule.forFeature([UserTestEntity]),
     HorarioModule
   ],
-  providers: [UsertestService, UsertestResolver]
+  providers: [UsertestService, UsertestResolver],
 })
 export class UsertestModule { }

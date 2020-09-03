@@ -91,14 +91,19 @@ input UserTestInput {
   personasdeconvivencia: String
 }
 
-# input LoginInput1 {
-#   email: String!
-#   password: String!
-# }
+type MiPaciente {
+  userid: String
+  nombres: String
+  apellidos: String
+  evaluacion: String
+  genero: String
+  distrito: String
+}
 
 type Query {
   userTest: UserTest
   userTests: [UserTest!]
+  miPaciente(doctorid: String): [MiPaciente]
   # login(input: LoginInput!): String
 }
 

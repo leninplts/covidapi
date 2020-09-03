@@ -1,5 +1,5 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { UserTestEntity } from './usertest.entity';
+import { UserTestEntity, MiPaciente } from './usertest.entity';
 import { UsertestService } from './usertest.service';
 import { UserTestInput } from './usertest.input';
 
@@ -11,6 +11,12 @@ export class UsertestResolver {
     async userTests() {
         console.log('todos los test');
         return this.userTestService.findAll();
+    }
+
+    @Query(() => [MiPaciente])
+    async miPaciente(@Args('doctorid') doctorid: string) {
+        console.log(doctorid);
+        return this.userTestService.miPaciente(doctorid);
     }
 
     @Mutation(() => String)

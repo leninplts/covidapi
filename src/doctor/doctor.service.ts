@@ -30,8 +30,8 @@ export class DoctorService {
         return await bcrypt.compare(password, hashedPassword);
     }
 
-    createToken({ _id, nombres, apellidos, usuario, email, password, celular }: DoctorEntity) {
-        return jwt.sign({ _id, nombres, apellidos, usuario, email, password, celular }, 'secret');
+    createToken({ _id, nombres, apellidos, usuario, email, password, celular, especialidad }: DoctorEntity) {
+        return jwt.sign({ _id, nombres, apellidos, usuario, email, password, celular, especialidad }, 'secret');
     }
 
     async create(input: DoctorInput): Promise<DoctorEntity> {

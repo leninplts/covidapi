@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { UserTestEntity } from './usertest.entity';
+import { UserTestEntity, MiPaciente } from './usertest.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserTestInput } from './usertest.input';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,6 +16,36 @@ export class UsertestService {
 
     async findAll(): Promise<UserTestEntity[]> {
         return await this.userTestRepository.find();
+    }
+
+    async miPaciente(doctorid: string): Promise<MiPaciente[]> {
+
+        const users = await this.userTestRepository.find({ doctorid });
+        const pacientes = users.map((miPaciente) => {
+            const paciente = new MiPaciente();
+            paciente.userid = miPaciente.uderid;
+            paciente.nombres = miPaciente.nombres;
+            paciente.apellidos = miPaciente.apellidos;
+            paciente.distrito = miPaciente.distrito;
+            paciente.genero = miPaciente.genero;
+            paciente.evaluacion = "moderado";
+            return paciente;
+        })
+
+        console.log(pacientes);
+
+        // for (let i = 0; i < users.length; i++) {
+        //     const paciente = new MiPaciente();
+        //     paciente.userid = users[i].uderid;
+        //     paciente.nombres = users[i].nombres;
+        //     paciente.apellidos = users[i].apellidos;
+        //     paciente.distrito = users[i].distrito;
+        //     paciente.genero = users[i].genero;
+        //     paciente.evaluacion = users[i].sinsintomas;
+        // }
+
+        // console.log(users);
+        return pacientes;
     }
 
     async create(input: UserTestInput): Promise<UserTestEntity> {
