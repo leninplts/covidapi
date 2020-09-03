@@ -1,0 +1,21 @@
+type Paciente {
+  _id: String!
+  doctorid: String!
+  userid: String!
+  nombres: String!
+  apellidos: String!
+}
+
+input PacienteInput {
+  doctorid: String!
+  userid: String!
+}
+
+type Query {
+  pacientes: [Paciente!]
+  misPacientes(doctorid: String): [Paciente]
+}
+
+type Mutation {
+  createPaciente(input: PacienteInput!): Paciente
+}
