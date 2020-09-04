@@ -10,6 +10,7 @@ import { HorarioModule } from './horario/horario.module';
 import { UsertestModule } from './usertest/usertest.module';
 import { DiagnosticoModule } from './diagnostico/diagnostico.module';
 import { TerapiaModule } from './terapia/terapia.module';
+import { ConsultaModule } from './consulta/consulta.module';
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { TerapiaModule } from './terapia/terapia.module';
     HorarioModule,
     UsertestModule,
     DiagnosticoModule,
-    TerapiaModule
+    TerapiaModule,
+    ConsultaModule
   ],
   controllers: [AppController],
   providers: [AppService],
